@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Universidad Pascual Bravo</string>
+    <string name="titulo">Inicio De Sesion</string>
+    <string name="titulo2">Pagina Principal</string>
+    <string name="usu_name">USUARIO</string>
+    <string name="password">CONTRASEÑA</string>
+    <string name="ingresar">Iniciar Sesion</string>
+    <string name="web">IR A SICAU</string>
+    <string name="AbrirGoogle">Abrir Google</string>
+    <string name="app">Abrir Camara</string>
+    <string name="welcome">BIENVENIDO</string>
+    <string name="cuerpo">Cual de las siguientes funciones desea realizar</string>
+
+
+    <string name="Llamar">Abrir Telefono</string>
+    <string name="regreso">ATRAS</string>
+    <string name="Resultado">Resultado:</string>
+</resources>
