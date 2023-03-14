@@ -3,8 +3,11 @@ package com.mobie.login_registro;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,31 +26,30 @@ public class MainActivity2 extends AppCompatActivity {
 
         Botones();
         recibirDatos();
-        abreCamara();
     }
     public void Botones(){
         Google = (Button)findViewById(R.id.webGoogle);
         webSicau = (Button)findViewById(R.id.webSicau);
-        //camara = (Button)findViewById(R.id.camara);
+        camara = (Button)findViewById(R.id.camara);
 
-        Google.setOnClickListener(new View.OnClickListener() {
+        camara.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                abrirCamara(view);
+            }
+        });
+        Google.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 webGoogle(view);
             }
         });
-        webSicau.setOnClickListener(new View.OnClickListener() {
+        webSicau.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 webSicau(view);
             }
         });
-        /*camara.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                camara(view);
-            }
-        });*/
     }
     public void webGoogle(View View){
         Intent irGoogle = new Intent(Intent.ACTION_VIEW); // Abre una nueva pantalla
@@ -59,10 +61,11 @@ public class MainActivity2 extends AppCompatActivity {
         sicau.setData(Uri.parse("https://sicau.pascualbravo.edu.co/SICAU/Account/Login"));
         startActivity(sicau);
     }
-    public void abreCamara(){
-        Intent camara = new Intent(Intent.ACTION_CAMERA_BUTTON); // Abre la app de Camara
-        camara.setData(Uri.parse(""));
-        startActivity(camara);
+    public void abrirCamara(View view){
+        Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (i.resolveActivity(getPackageManager())!=null){
+            startActivityForResult(i, 1);
+        }
     }
     public void recibirDatos(){
         dato_1 = (TextView) findViewById(R.id.dato1);
