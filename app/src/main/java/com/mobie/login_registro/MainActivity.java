@@ -31,26 +31,34 @@ public class MainActivity extends AppCompatActivity {
         ingresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                enviardatos(view);
+                if (ingresar() == true){
+                    enviardatos(view);
+                }
             }
         });
     }
-    public void ingresar(View view){
+    public boolean ingresar(){
         String nombre = nom.getText().toString();
         String apellido = ape.getText().toString();
         String password = pass.getText().toString();
-        if(nombre.length() == 0){
-            Toast.makeText(this,"Ingresa Tu Nombre",Toast.LENGTH_LONG).show();
+        boolean validar;
+        if(nombre.length() == 0 | apellido.length() == 0 | password.length() == 0){
+            if(nombre.length() == 0){
+                nom.setError("Este Campo Es Obligatorio");
+            }
+            if(apellido.length() == 0){
+                ape.setError("Este Campo Es Obligatorio");
+            }
+            if(password.length() == 0){
+                pass.setError("Este Campo Es Obligatorio");
+            }
+            validar = false;
         }
-        if(apellido.length() == 0){
-            Toast.makeText(this,"Ingresa Tu Apellido",Toast.LENGTH_LONG).show();
-        }
-        if(password.length() == 0){
-            Toast.makeText(this,"Ingresa Tu Contraseña",Toast.LENGTH_LONG).show();
-        }
-        if(nombre.length() != 0 && apellido.length() != 0 && password.length() != 0){
+        else {
             Toast.makeText(this,"Ingreso Exitoso",Toast.LENGTH_LONG).show();
+            validar=true;
         }
+        return validar;
     }
     @Override
     protected void onStart() {
